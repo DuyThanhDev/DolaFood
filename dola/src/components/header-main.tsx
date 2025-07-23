@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Input, Badge, Button, Dropdown, Menu } from "antd";
+import { Badge, Dropdown, Menu } from "antd";
 import { SearchOutlined, ShoppingCartOutlined, UserOutlined, HeartOutlined, LoginOutlined, UserAddOutlined } from "@ant-design/icons";
 
 // HeaderMain: Thanh header chính với logo, tìm kiếm, thông tin giao hàng, tài khoản, giỏ hàng
@@ -38,47 +38,80 @@ export default function HeaderMain() {
   );
 
   return (
-    <div className="container mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
-      {/* Logo */}
-      <div className="mb-4 md:mb-0">
-        <a href="/">
-          <img src="https://bizweb.dktcdn.net/100/510/571/themes/941527/assets/logo.png?1727255430829" alt="Dola Food" width={200} height={60} className="object-contain" />
-        </a>
-      </div>
-      {/* Search */}
-      <div className="w-full md:w-1/3 mb-4 md:mb-0">
-        <Input placeholder={searchSuggestions[currentSuggestion]} suffix={<SearchOutlined />} className="rounded-md text-base" />
-      </div>
-      {/* Delivery, Account, Cart */}
-      <div className="flex items-center space-x-4 md:space-x-6">
-        <div className="flex items-center">
-          <div className="mr-2">
-            <img src="https://bizweb.dktcdn.net/100/510/571/themes/941527/assets/delivery.png?1727255430829" alt="Giao hàng" width={40} height={40} className="object-contain" />
+    <div className="bg-white w-full">
+      <div className="container mx-auto px-32">
+        <div className="flex items-center justify-between w-full py-4">
+          {/* Logo */}
+          <div className="flex-shrink-0 flex items-center" style={{ minWidth: 180 }}>
+            <a href="/">
+              <img src="https://bizweb.dktcdn.net/100/510/571/themes/941527/assets/logo.png?1727255430829" alt="Dola Food" width={172} height={50} className="object-contain" />
+            </a>
           </div>
-          <div className="flex flex-col">
-            <span className="text-base font-bold text-[#116d36]">Giao hàng tận nơi</span>
-            <span className="text-red-500 font-bold text-lg">1900 6750</span>
+          {/* Search */}
+          <div className="flex-1 flex justify-center px-4">
+            <form className="w-full max-w-lg">
+              <div className="flex items-center">
+                <input
+                  type="text"
+                  placeholder={searchSuggestions[currentSuggestion]}
+                  className="h-12 w-full rounded-l-2xl bg-[#e1e1e1] text-base px-4 focus:outline-none placeholder-gray-500"
+                  style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
+                />
+                <button
+                  type="submit"
+                  className="h-12 w-12 flex items-center justify-center rounded-r-2xl bg-red-600"
+                  style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
+                  tabIndex={-1}
+                >
+                  <SearchOutlined style={{ fontSize: 22, color: '#fff' }} />
+                </button>
+              </div>
+            </form>
           </div>
-        </div>
-        <Dropdown overlay={accountMenu} placement="bottomRight" trigger={["hover"]} arrow>
-          <div className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full cursor-pointer hover:ring-2 hover:ring-[#116d36] transition">
-            <UserOutlined style={{ fontSize: "20px", color: "#116d36" }} />
-          </div>
-        </Dropdown>
-        <a href="/cart">
-          <Badge count={0} showZero>
-            <div className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full">
-              <ShoppingCartOutlined style={{ fontSize: "20px" }} />
+          {/* Actions */}
+          <div className="flex items-center gap-4">
+            {/* Giao hàng tận nơi */}
+            <div className="flex items-center gap-2">
+              <img src="https://bizweb.dktcdn.net/100/510/571/themes/941527/assets/delivery.png?1727255430829" alt="Giao hàng" width={32} height={32} className="object-contain" />
+              <div className="flex flex-col leading-tight">
+                <span className="text-base font-bold text-black">Giao hàng tận nơi</span>
+                <span className="text-red-500 font-bold text-lg">1900 6750</span>
+              </div>
             </div>
-          </Badge>
-        </a>
-        <div className="hidden md:flex space-x-2">
-          <Button type="primary" danger className="rounded-full px-5 font-semibold bg-red-600 text-white border-0 hover:bg-[#116d36] hover:text-white transition">
-            Đặt món online
-          </Button>
-          <Button danger className="rounded-full px-5 font-semibold bg-red-600 text-white border-0 hover:bg-[#116d36] hover:text-white transition">
-            Đặt bàn
-          </Button>
+            {/* Account */}
+            <Dropdown overlay={accountMenu} placement="bottomRight" trigger={["hover"]} arrow>
+              <div className="flex items-center justify-center w-11 h-11 bg-gray-200 rounded-full cursor-pointer hover:ring-2 hover:ring-[#116d36] transition">
+                <UserOutlined style={{ fontSize: "22px", color: "#116d36" }} />
+              </div>
+            </Dropdown>
+            {/* Cart */}
+            <a href="/cart">
+              <Badge count={0} showZero>
+                <div className="flex items-center justify-center w-11 h-11 bg-gray-200 rounded-full">
+                  <ShoppingCartOutlined style={{ fontSize: "22px", color: "#116d36" }} />
+                </div>
+              </Badge>
+            </a>
+            {/* Buttons */}
+            <a href="/collections/all">
+              <button
+                className="rounded-2xl px-7 font-semibold border-none shadow-sm transition-colors duration-200 bg-red-600 text-white h-12 hover:bg-[#116d36]"
+                style={{ borderRadius: '18px', border: 'none' }}
+                type="button"
+              >
+                Đặt món online
+              </button>
+            </a>
+            <a href="/dat-ban">
+              <button
+                className="rounded-2xl px-7 font-semibold border-none shadow-sm transition-colors duration-200 bg-red-600 text-white h-12 hover:bg-[#116d36]"
+                style={{ borderRadius: '18px', border: 'none' }}
+                type="button"
+              >
+                Đặt bàn
+              </button>
+            </a>
+          </div>
         </div>
       </div>
     </div>
