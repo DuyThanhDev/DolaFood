@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import Typography from "antd/lib/typography";
-
-const { Text } = Typography;
 
 export default function HeaderTop() {
   const messages = [
-    "Chào mừng bạn đến với Dola Food!",
     "Đặt ngay món ăn yêu thích của bạn",
     "Nhiều ưu đãi dành cho bạn",
+    "Chào mừng bạn đến với Dola Food!",
   ];
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
@@ -21,8 +18,8 @@ export default function HeaderTop() {
   }, []);
 
   return (
-    <div className="w-full bg-green-800 text-white py-2 text-center">
-      <Text className="text-white font-medium">{messages[currentMessageIndex]}</Text>
+    <div className="w-full bg-[#116d36] text-white py-1 px-6 text-center">
+      <span className="text-white text-base md:text-lg tracking-wide">{messages[currentMessageIndex]}</span>
     </div>
   );
 }

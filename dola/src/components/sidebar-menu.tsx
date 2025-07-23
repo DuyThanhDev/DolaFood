@@ -14,62 +14,60 @@ export default function SidebarMenu() {
   };
 
   return (
-    <div className="bg-green-800 text-white">
-      <div className="container mx-auto">
+    <div className="bg-[#116d36] text-white">
+      <div className="container mx-auto px-6">
         <Menu
           onClick={onClick}
           selectedKeys={[current]}
           mode="horizontal"
-          className="bg-green-800 text-white border-0"
-          style={{
-            color: "white",
-            backgroundColor: "#166534", // Tailwind green-800
-          }}
+          className="bg-[#116d36] text-white border-0 text-lg font-semibold"
+          style={{ color: "white", backgroundColor: "#116d36" }}
         >
-          <Menu.Item key="home">
-            <a href="/">Trang chủ</a>
+          <Menu.Item key="home" className="hover:border-b-2 hover:border-red-500">
+            <a href="/" className="text-white">Trang chủ</a>
           </Menu.Item>
-          <Menu.Item key="about">
-            <a href="/gioi-thieu">Giới thiệu</a>
+          <Menu.Item key="about" className="hover:border-b-2 hover:border-red-500">
+            <a href="/gioi-thieu" className="text-white">Giới thiệu</a>
           </Menu.Item>
           <SubMenu
             key="products"
             title={
-              <span className="flex items-center">
+              <span className="flex items-center text-white">
                 Sản phẩm <DownOutlined className="ml-1" />
               </span>
             }
+            popupClassName="bg-white border border-red-500 rounded-md"
           >
-            <Menu.Item key="pizza">
-              <a href="/san-pham/pizza">Pizza</a>
+            <Menu.Item key="pizza" className="hover:bg-red-100">
+              <a href="/san-pham/pizza" className="text-black">Pizza</a>
             </Menu.Item>
-            <Menu.Item key="khai-vi">
-              <a href="/san-pham/khai-vi">Khai vị</a>
+            <Menu.Item key="khai-vi" className="hover:bg-red-100">
+              <a href="/san-pham/khai-vi" className="text-black">Khai vị</a>
             </Menu.Item>
-            <Menu.Item key="mi-y">
-              <a href="/san-pham/mi-y">Mì Ý</a>
+            <Menu.Item key="mi-y" className="hover:bg-red-100">
+              <a href="/san-pham/mi-y" className="text-black">Mì Ý</a>
             </Menu.Item>
-            <Menu.Item key="salad">
-              <a href="/san-pham/salad">Salad</a>
+            <Menu.Item key="salad" className="hover:bg-red-100">
+              <a href="/san-pham/salad" className="text-black">Salad</a>
             </Menu.Item>
-            <Menu.Item key="thuc-uong">
-              <a href="/san-pham/thuc-uong">Thức uống</a>
+            <Menu.Item key="thuc-uong" className="hover:bg-red-100">
+              <a href="/san-pham/thuc-uong" className="text-black">Thức uống</a>
             </Menu.Item>
           </SubMenu>
-          <Menu.Item key="news">
-            <a href="/tin-tuc">Tin tức</a>
+          <Menu.Item key="news" className="hover:border-b-2 hover:border-red-500">
+            <a href="/tin-tuc" className="text-white">Tin tức</a>
           </Menu.Item>
-          <Menu.Item key="contact">
-            <a href="/lien-he">Liên hệ</a>
+          <Menu.Item key="contact" className="hover:border-b-2 hover:border-red-500">
+            <a href="/lien-he" className="text-white">Liên hệ</a>
           </Menu.Item>
-          <Menu.Item key="faq">
-            <a href="/cau-hoi-thuong-gap">Câu hỏi thường gặp</a>
+          <Menu.Item key="faq" className="hover:border-b-2 hover:border-red-500">
+            <a href="/cau-hoi-thuong-gap" className="text-white">Câu hỏi thường gặp</a>
           </Menu.Item>
-          <Menu.Item key="stores">
-            <a href="/he-thong-cua-hang">Hệ thống cửa hàng</a>
+          <Menu.Item key="stores" className="hover:border-b-2 hover:border-red-500">
+            <a href="/he-thong-cua-hang" className="text-white">Hệ thống cửa hàng</a>
           </Menu.Item>
-          <Menu.Item key="booking">
-            <a href="/dat-ban">Đặt bàn</a>
+          <Menu.Item key="booking" className="hover:border-b-2 hover:border-red-500">
+            <a href="/dat-ban" className="text-white">Đặt bàn</a>
           </Menu.Item>
         </Menu>
       </div>

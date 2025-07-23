@@ -11,38 +11,23 @@ function usePathname() {
 
 // HeaderBottom: Breadcrumb điều hướng
 export default function HeaderBottom() {
-  const pathname = usePathname();
-
-  const breadcrumbItems = useMemo(() => {
-    const paths = pathname.split("/").filter(Boolean);
-    // Luôn bắt đầu với Trang chủ
-    const items = [
-      {
-        title: <a href="/">Trang chủ</a>,
-      },
-    ];
-    // Thêm các path tiếp theo
-    if (paths.length > 0) {
-      let currentPath = "";
-      paths.forEach((path, index) => {
-        currentPath += `/${path}`;
-        const formattedPath = path
-          .split("-")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ");
-        if (index === paths.length - 1) {
-          items.push({ title: <span>{formattedPath}</span> });
-        } else {
-          items.push({ title: <a href={currentPath}>{formattedPath}</a> });
-        }
-      });
-    }
-    return items;
-  }, [pathname]);
+  // Breadcrumb cố định cho trang liên hệ
+  const breadcrumbItems = [
+    {
+      title: <span className="text-[#116d36] font-semibold">Trang chủ</span>,
+    },
+    {
+      title: <span className="text-red-500 font-semibold text-lg">Liên hệ</span>,
+    },
+  ];
 
   return (
-    <div className="container mx-auto py-4 px-4 bg-gray-100">
-      <Breadcrumb items={breadcrumbItems} />
+    <div className="container mx-auto py-4 px-6 bg-gray-100">
+      <Breadcrumb
+        items={breadcrumbItems}
+        className="text-base md:text-lg"
+        separator={<span className="text-gray-400"> &gt; </span>}
+      />
     </div>
   );
 }
